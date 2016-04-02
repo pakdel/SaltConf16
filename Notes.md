@@ -21,8 +21,8 @@ salt minion cmd.run 'cat /etc/resolv.conf'
 ```
 salt minion grains.get roles
 salt minion state.sls name_resolution
+salt minion cmd.run 'dig test.auto.dot'
 ```
-
 - `api.auto.dot`
 ```
 salt minion grains.setval roles '["dns", "api"]'
