@@ -1,0 +1,132 @@
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 14:30:53.894246[0;0m
+    [0;36mDuration: 140.376 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -12,5 +12,5 @@[0;0m
+                  [0;32m                        ;AAAA    ::1[0;0m
+                  [0;32m $ORIGIN auto.dot.[0;0m
+                  [0;32m [0;0m
+                  [0;32m-test             A     127.0.1.1[0;0m
+                  [0;32m+test             A     127.0.0.1[0;0m
+                  [0;32m api              A     172.31.47.167[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 14:30:54.074068[0;0m
+    [0;36mDuration: 87.185 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 4[0;0m ([0;32mchanged=2[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     4[0;0m
+[0;0m# 
+[0;0m# 
+[0;0m# salt minion saltutil.sync_modules
+[0;36mminion[0;0m:
+    [0;32m- modules.helper[0;0m
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 14:33:57.220831[0;0m
+    [0;36mDuration: 145.176 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -1,7 +1,7 @@[0;0m
+                  [0;32m $ORIGIN .[0;0m
+                  [0;32m $TTL 86400    ; 1 day[0;0m
+                  [0;32m auto.dot        IN SOA    auto.dot. salt.auto.dot. ([0;0m
+                  [0;32m-                2016042001 ; serial (YYYYMMDDHH)[0;0m
+                  [0;32m+                1459607637 ; serial[0;0m
+                  [0;32m                 86400      ; refresh (1 day)[0;0m
+                  [0;32m                 3600       ; retry (1 hour)[0;0m
+                  [0;32m                 604800     ; expire (1 week)[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 14:33:57.411739[0;0m
+    [0;36mDuration: 94.356 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 4[0;0m ([0;32mchanged=2[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     4[0;0m
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 14:34:10.059186[0;0m
+    [0;36mDuration: 139.068 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -1,7 +1,7 @@[0;0m
+                  [0;32m $ORIGIN .[0;0m
+                  [0;32m $TTL 86400    ; 1 day[0;0m
+                  [0;32m auto.dot        IN SOA    auto.dot. salt.auto.dot. ([0;0m
+                  [0;32m-                1459607637 ; serial[0;0m
+                  [0;32m+                1459607650 ; serial[0;0m
+                  [0;32m                 86400      ; refresh (1 day)[0;0m
+                  [0;32m                 3600       ; retry (1 hour)[0;0m
+                  [0;32m                 604800     ; expire (1 week)[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 14:34:10.239030[0;0m
+    [0;36mDuration: 90.0 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 4[0;0m ([0;32mchanged=2[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     4[0;0m

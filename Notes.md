@@ -52,3 +52,15 @@ salt minion cmd.run "nohup /bin/sh -c 'sleep 3; salt-call --local service.stop s
 salt minion state.sls name_resolution
 salt minion state.sls test
 ```
+
+
+
+# V. 3
+- But "serial" is not updated!
+`salt minion state.sls dns`
+## V.3.1
+- Using time in seconds
+```
+salt minion saltutil.sync_modules
+salt minion state.sls dns
+```

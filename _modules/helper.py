@@ -5,6 +5,7 @@
 
 import salt.utils
 import sys
+import time
 # import logging
 # log = logging.getLogger(__name__)
 #
@@ -18,3 +19,6 @@ def __virtual__():
 def reload_resolv_conf():
     # log.info('Forced Lazy Loading')
     salt.utils.res_init()
+
+def dns_sequence():
+	return int(time.time())
