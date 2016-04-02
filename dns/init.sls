@@ -19,6 +19,14 @@ named:
     - require:
       - pkg: named
 
+set_dns_sequence_grain:
+  module.run:
+    - name: grains.setval
+    - key: 'dns_sequence'
+    - val: {{ salt['helper.dns_sequence']() }}
+    - prereq:
+      - file: /var/named/named.auto.dot
+
 /var/named/named.auto.dot:
   file.managed:
     - source: salt://dns/named.auto.dot.jinja

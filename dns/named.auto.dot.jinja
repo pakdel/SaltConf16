@@ -1,7 +1,7 @@
 $ORIGIN .
 $TTL 86400    ; 1 day
 auto.dot        IN SOA    auto.dot. salt.auto.dot. (
-                {{ salt['helper.dns_sequence']() }} ; serial
+                {{ grains['dns_sequence'] }} ; serial
                 86400      ; refresh (1 day)
                 3600       ; retry (1 hour)
                 604800     ; expire (1 week)

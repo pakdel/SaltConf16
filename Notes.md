@@ -64,3 +64,17 @@ salt minion state.sls test
 salt minion saltutil.sync_modules
 salt minion state.sls dns
 ```
+## V.3.2
+- Let's set a grain
+```
+salt minion state.sls dns
+```
+- It failed!
+-- Running Salt Minion in Debug mode:
+```
+salt-minion -l debug
+
+[DEBUG   ] In saltenv 'base', ** considering ** path u'/var/cache/salt/minion/files/base/dns/named.auto.dot.jinja' to resolve u'salt://dns/named.auto.dot.jinja'
+```
+--- Failed while ** considering **
+Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
