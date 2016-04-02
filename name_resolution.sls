@@ -12,12 +12,12 @@
     - group: root
     - mode: 644
 
-# schedule_salt-minion_restart:
-#   cmd.wait:
-#     - name: nohup /bin/sh -c 'sleep 3; salt-call --local service.stop salt-minion; sleep 3; killall salt-minion; sleep 3; salt-call --local service.restart salt-minion; sleep 3; salt-call --local service.start salt-minion' >>/var/log/salt/minion 2>&1 & echo Salt-Minion Restart Scheduled ...
-#     - watch:
-#       - file: /etc/resolv.conf
-#     - order: last
+schedule_salt-minion_restart:
+  cmd.wait:
+    - name: nohup /bin/sh -c 'sleep 3; salt-call --local service.stop salt-minion; sleep 3; killall salt-minion; sleep 3; salt-call --local service.restart salt-minion; sleep 3; salt-call --local service.start salt-minion' >>/var/log/salt/minion 2>&1 & echo Salt-Minion Restart Scheduled ...
+    - watch:
+      - file: /etc/resolv.conf
+    - order: last
 
 # "helper" module has a part that reinitializes libc.so.6 as following:
 # ctypes.CDLL('libc.so.6').__res_init(None)
