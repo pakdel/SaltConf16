@@ -33,3 +33,22 @@ salt minion state.sls test
 ```
 [DNS: changes in /etc/resolv.conf aren't picked up](https://bugzilla.mozilla.org/show_bug.cgi?id=214538) /
 [libc caches resolv.conf forever](https://sourceware.org/bugzilla/show_bug.cgi?id=3675)
+
+
+
+# V. 2
+## V. 2.1
+- Restarting Salt Minion not only will not help with the rest of state execution,
+but also it will break long states (like highstate)
+```
+salt minion cmd.run "nohup /bin/sh -c 'sleep 3; salt-call --local service.stop salt-minion; sleep 3; killall salt-minion; sleep 3; salt-call --local service.restart salt-minion; sleep 3; salt-call --local service.start salt-minion' >>/var/log/salt/minion 2>&1 & echo Salt-Minion Restart Scheduled ..."
+```
+## V. 2.2
+- Reloading resolve.conf will not help with next state executions
+## V. 2.3
+- We need both
+```
+# Restarted networking on the minion to revert back resolv.conf
+salt minion state.sls name_resolution
+salt minion state.sls test
+```
