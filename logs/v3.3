@@ -1,0 +1,229 @@
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: set_dns_sequence_grain[0;0m
+    [0;36mFunction: module.run[0;0m
+    [0;36m    Name: grains.setval[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Module function grains.setval executed[0;0m
+    [0;36m Started: 15:09:58.586360[0;0m
+    [0;36mDuration: 205.052 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mret[0;0m:
+                  [0;36m----------[0;0m
+                  [0;36mdns_sequence[0;0m:
+                      [0;1;33m1459609797[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 15:09:58.791712[0;0m
+    [0;36mDuration: 250.605 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -1,7 +1,7 @@[0;0m
+                  [0;32m $ORIGIN .[0;0m
+                  [0;32m $TTL 86400    ; 1 day[0;0m
+                  [0;32m auto.dot        IN SOA    auto.dot. salt.auto.dot. ([0;0m
+                  [0;32m-                1459607650 ; serial[0;0m
+                  [0;32m+                1459609797 ; serial[0;0m
+                  [0;32m                 86400      ; refresh (1 day)[0;0m
+                  [0;32m                 3600       ; retry (1 hour)[0;0m
+                  [0;32m                 604800     ; expire (1 week)[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 15:09:59.194611[0;0m
+    [0;36mDuration: 132.707 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m ([0;32mchanged=3[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: grains.setval - Function: module.run - Result: Clean[0;0m
+ [0;32m Name: /var/named/named.auto.dot - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: named - Function: service.running - Result: Clean[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m
+[0;0m# sed -i -e 's/127.0.0.1/127.0.1.1/' /srv/salt/file-local/dns/named.auto.dot.jinja
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: set_dns_sequence_grain[0;0m
+    [0;36mFunction: module.run[0;0m
+    [0;36m    Name: grains.setval[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Module function grains.setval executed[0;0m
+    [0;36m Started: 15:14:46.762719[0;0m
+    [0;36mDuration: 199.266 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mret[0;0m:
+                  [0;36m----------[0;0m
+                  [0;36mdns_sequence[0;0m:
+                      [0;1;33m1459610085[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 15:14:46.962253[0;0m
+    [0;36mDuration: 253.64 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -1,7 +1,7 @@[0;0m
+                  [0;32m $ORIGIN .[0;0m
+                  [0;32m $TTL 86400    ; 1 day[0;0m
+                  [0;32m auto.dot        IN SOA    auto.dot. salt.auto.dot. ([0;0m
+                  [0;32m-                1459609797 ; serial[0;0m
+                  [0;32m+                1459610085 ; serial[0;0m
+                  [0;32m                 86400      ; refresh (1 day)[0;0m
+                  [0;32m                 3600       ; retry (1 hour)[0;0m
+                  [0;32m                 604800     ; expire (1 week)[0;0m
+                  [0;32m@@ -12,5 +12,5 @@[0;0m
+                  [0;32m                        ;AAAA    ::1[0;0m
+                  [0;32m $ORIGIN auto.dot.[0;0m
+                  [0;32m [0;0m
+                  [0;32m-test             A     127.0.0.1[0;0m
+                  [0;32m+test             A     127.0.1.1[0;0m
+                  [0;32m api              A     172.31.47.167[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 15:14:47.306942[0;0m
+    [0;36mDuration: 144.175 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m ([0;32mchanged=3[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: grains.setval - Function: module.run - Result: Clean[0;0m
+ [0;32m Name: /var/named/named.auto.dot - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: named - Function: service.running - Result: Clean[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m
+[0;0m# sed -i -e 's/127.0.1.1/127.0.0.1/' /srv/salt/file-local/dns/named.auto.dot.jinja
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: set_dns_sequence_grain[0;0m
+    [0;36mFunction: module.run[0;0m
+    [0;36m    Name: grains.setval[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Module function grains.setval executed[0;0m
+    [0;36m Started: 15:16:07.551547[0;0m
+    [0;36mDuration: 204.484 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mret[0;0m:
+                  [0;36m----------[0;0m
+                  [0;36mdns_sequence[0;0m:
+                      [0;1;33m1459610166[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: /var/named/named.auto.dot[0;0m
+    [0;36mFunction: file.managed[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: File /var/named/named.auto.dot updated[0;0m
+    [0;36m Started: 15:16:07.756308[0;0m
+    [0;36mDuration: 235.427 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mdiff[0;0m:
+                  [0;32m---  [0;0m
+                  [0;32m+++  [0;0m
+                  [0;32m@@ -1,7 +1,7 @@[0;0m
+                  [0;32m $ORIGIN .[0;0m
+                  [0;32m $TTL 86400    ; 1 day[0;0m
+                  [0;32m auto.dot        IN SOA    auto.dot. salt.auto.dot. ([0;0m
+                  [0;32m-                1459610085 ; serial[0;0m
+                  [0;32m+                1459610166 ; serial[0;0m
+                  [0;32m                 86400      ; refresh (1 day)[0;0m
+                  [0;32m                 3600       ; retry (1 hour)[0;0m
+                  [0;32m                 604800     ; expire (1 week)[0;0m
+                  [0;32m@@ -12,5 +12,5 @@[0;0m
+                  [0;32m                        ;AAAA    ::1[0;0m
+                  [0;32m $ORIGIN auto.dot.[0;0m
+                  [0;32m [0;0m
+                  [0;32m-test             A     127.0.1.1[0;0m
+                  [0;32m+test             A     127.0.0.1[0;0m
+                  [0;32m api              A     172.31.47.167[0;0m[0;0m
+[0;36m----------[0;0m
+    [0;36m      ID: named[0;0m
+    [0;36mFunction: service.running[0;0m
+    [0;36m  Result: True[0;0m
+    [0;36m Comment: Service restarted[0;0m
+    [0;36m Started: 15:16:08.083083[0;0m
+    [0;36mDuration: 136.83 ms[0;0m
+[0;36m     Changes:   
+              [0;36m----------[0;0m
+              [0;36mnamed[0;0m:
+                  [0;1;33mTrue[0;0m[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m ([0;32mchanged=3[0;0m)
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m
+[0;0m# salt minion state.sls dns
+[0;32mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: grains.setval - Function: module.run - Result: Clean[0;0m
+ [0;32m Name: /var/named/named.auto.dot - Function: file.managed - Result: Clean[0;0m
+ [0;32m Name: named - Function: service.running - Result: Clean[0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 5[0;0m
+[0;36mFailed:    0[0;0m
+[0;36m------------
+Total states run:     5[0;0m

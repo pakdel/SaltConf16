@@ -78,3 +78,5 @@ salt-minion -l debug
 ```
 --- Failed while ** considering **
 Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
+## V.3.3
+- dns_sequence grain needs a default
