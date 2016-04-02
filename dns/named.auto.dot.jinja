@@ -1,0 +1,19 @@
+$ORIGIN .
+$TTL 86400    ; 1 day
+auto.dot        IN SOA    auto.dot. salt.auto.dot. (
+                2016042001 ; serial (YYYYMMDDHH)
+                86400      ; refresh (1 day)
+                3600       ; retry (1 hour)
+                604800     ; expire (1 week)
+                300        ; minimum (5mins)
+                )
+                       NS    auto.dot.
+                       A    {{ grains['ip_interfaces']['eth0'][0] }}
+                       ;AAAA    ::1
+$ORIGIN auto.dot.
+
+test             A     127.0.1.1
+{%- for ip_addrs in salt['mine.get']('roles:api', 'network.ip_addrs', 'grain').values() %}
+{#- Assuming one IP per server #}
+api              A     {{ ip_addrs[0] }}
+{%- endfor %}
