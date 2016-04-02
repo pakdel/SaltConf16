@@ -1,0 +1,51 @@
+[0;0m# salt minion state.sls dns
+[0;31mminion:[0;0m
+ [0;32m Name: bind - Function: pkg.installed - Result: Clean[0;0m
+ [0;32m Name: /etc/named.conf - Function: file.managed - Result: Clean[0;0m
+[0;31m----------[0;0m
+    [0;31m      ID: set_dns_sequence_grain[0;0m
+    [0;31mFunction: module.run[0;0m
+    [0;31m    Name: grains.setval[0;0m
+    [0;31m  Result: False[0;0m
+    [0;31m Comment: One or more requisite failed: dns./var/named/named.auto.dot[0;0m
+    [0;31m Started: [0;0m
+    [0;31mDuration: [0;0m
+[0;31m     Changes:   [0;0m
+[0;31m----------[0;0m
+    [0;31m      ID: /var/named/named.auto.dot[0;0m
+    [0;31mFunction: file.managed[0;0m
+    [0;31m  Result: False[0;0m
+    [0;31m Comment: An exception occurred in this state: Traceback (most recent call last):
+                File "/usr/lib/python2.6/site-packages/salt/state.py", line 1626, in call
+                  **cdata['kwargs'])
+                File "/usr/lib/python2.6/site-packages/salt/loader.py", line 1492, in wrapper
+                  return f(*args, **kwargs)
+                File "/usr/lib/python2.6/site-packages/salt/states/file.py", line 1581, in managed
+                  **kwargs
+                File "/usr/lib/python2.6/site-packages/salt/modules/file.py", line 3817, in check_managed_changes
+                  **kwargs)
+                File "/usr/lib/python2.6/site-packages/salt/modules/file.py", line 3516, in get_managed
+                  **kwargs)
+                File "/usr/lib/python2.6/site-packages/salt/utils/templates.py", line 178, in render_tmpl
+                  output = render_str(tmplstr, context, tmplpath)
+                File "/usr/lib/python2.6/site-packages/salt/utils/templates.py", line 384, in render_jinja_tmpl
+                  buf=tmplstr)
+              SaltRenderError: Jinja variable 'dict' object has no attribute 'dns_sequence'[0;0m
+    [0;31m Started: [0;0m
+    [0;31mDuration: [0;0m
+[0;31m     Changes:   [0;0m
+[0;31m----------[0;0m
+    [0;31m      ID: named[0;0m
+    [0;31mFunction: service.running[0;0m
+    [0;31m  Result: False[0;0m
+    [0;31m Comment: One or more requisite failed: dns./var/named/named.auto.dot[0;0m
+    [0;31m Started: [0;0m
+    [0;31mDuration: [0;0m
+[0;31m     Changes:   [0;0m
+[0;36m
+Summary for minion
+------------[0;0m
+[0;32mSucceeded: 2[0;0m
+[0;31mFailed:    3[0;0m
+[0;36m------------
+Total states run:     5[0;0m
