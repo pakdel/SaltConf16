@@ -80,3 +80,7 @@ salt-minion -l debug
 Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
 ## V.3.3
 - dns_sequence grain needs a default
+## V.3.4
+- What if we have more than one DNS?
+- Austritch solution:
+dns_sequence => time.time() / 100

@@ -21,4 +21,4 @@ def reload_resolv_conf():
     salt.utils.res_init()
 
 def dns_sequence():
-	return int(time.time())
+	return int(time.time()/100)
