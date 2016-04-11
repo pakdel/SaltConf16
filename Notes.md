@@ -43,8 +43,10 @@ but also it will break long states (like highstate)
 ```
 salt minion cmd.run "nohup /bin/sh -c 'sleep 3; salt-call --local service.stop salt-minion; sleep 3; killall salt-minion; sleep 3; salt-call --local service.restart salt-minion; sleep 3; salt-call --local service.start salt-minion' >>/var/log/salt/minion 2>&1 & echo Salt-Minion Restart Scheduled ..."
 ```
+
 ## V. 2.2
 - Reloading resolve.conf will not help with next state executions
+
 ## V. 2.3
 - We need both
 ```
@@ -58,12 +60,14 @@ salt minion state.sls test
 # V. 3
 - But "serial" is not updated!
 `salt minion state.sls dns`
+
 ## V.3.1
 - Using time in seconds
 ```
 salt minion saltutil.sync_modules
 salt minion state.sls dns
 ```
+
 ## V.3.2
 - Let's set a grain
 ```
@@ -78,8 +82,10 @@ salt-minion -l debug
 ```
   - Failed while ** considering **
     Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
+
 ## V.3.3
 - dns_sequence grain needs a default
+
 ## V.3.4
 - What if we have more than one DNS?
 - Austritch solution:
