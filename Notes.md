@@ -77,10 +77,10 @@ salt-minion -l debug
 [DEBUG   ] In saltenv 'base', ** considering ** path u'/var/cache/salt/minion/files/base/dns/named.auto.dot.jinja' to resolve u'salt://dns/named.auto.dot.jinja'
 ```
   - Failed while ** considering **
-Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
+    Because of the prerequisite, it needs to evaluate the Jinja to see if it needs to set the grains, which will faild during first execution.
 ## V.3.3
 - dns_sequence grain needs a default
 ## V.3.4
 - What if we have more than one DNS?
 - Austritch solution:
-dns_sequence => time.time() / 100
+    dns_sequence => time.time() / 100
