@@ -10,6 +10,9 @@ options {
         memstatistics-file "/var/named/data/named_mem_stats.txt";
 	allow-query     { any; };
 	recursion yes;
+
+	include "/etc/named.forwarders";
+	forward first;
 };
 
 logging {
@@ -19,13 +22,14 @@ logging {
         };
 };
 
-zone "." IN {
-	type hint;
-	file "named.ca";
-};
+# This is done by forwarding
+# zone "." IN {
+#	type hint;
+#	file "named.ca";
+# };
+# include "/etc/named.root.key";
 
 include "/etc/named.rfc1912.zones";
-include "/etc/named.root.key";
 
 
 zone "auto.dot." IN {

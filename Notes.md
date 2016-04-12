@@ -115,3 +115,14 @@ salt minion cmd.run 'nslookup ip-172-31-32-50.ec2.internal'
 ```
 
 The default behavior for resolv.conf and the resolver is to try the servers in the order listed. The resolver will only try the next nameserver if the first nameserver times out. The [resolv.conf manpage](http://linux.die.net/man/5/resolv.conf) says "The algorithm used is to try a name server, and if the query times out, try the next, until out of name servers, then repeat trying all the name servers until a maximum number of retries are made.". Even if `rotate` is used, it will not solve the issue.
+
+## V.4.2
+- Using DHCP Client Scripts to set up DNS forwarder(s)
+
+```
+salt minion cmd.run 'rm -f /etc/dhcp/dhclient-enter-hooks'
+salt minion cmd.run 'dhclient -r && dhclient'
+salt minion state.sls name_resolution
+
+salt minion state.sls dns
+```
