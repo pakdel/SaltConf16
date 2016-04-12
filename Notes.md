@@ -90,3 +90,28 @@ salt-minion -l debug
 - What if we have more than one DNS?
 - Austritch solution:
     dns_sequence => time.time() / 100
+
+
+*Note*: Beware of `RuntimeError: maximum recursion depth exceeded` error!
+
+
+
+# V. 4
+- What about repo.saltstack.com, or the Virtual Router of your CloudStack, or the DNS provided by the DHCP of AWS?
+    - Well, we already have repo.saltstack.com covered.
+
+## V.4.1
+- Put it in resolv.conf
+Lets put it in the [interface config file](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s1-networkscripts-interfaces.html) using `PEERDNS`
+    - But we cannot get the DNS provided by DCP in this file
+- Lets use DHCP Client Scripts as in [man 8 dhclient-script](http://linux.die.net/man/8/dhclient-script)
+    - On after defining the make_resolv_conf function, the client script checks for the presence of an executable `/etc/dhcp/dhclient-enter-hooks` script, and if present, it invokes the script inline
+    - Going to update values of `new_domain_name_servers` and `new_domain_name_servers` variables
+    - And it needs a reload / restart
+
+```
+salt minion state.sls name_resolution
+salt minion cmd.run 'nslookup ip-172-31-32-50.ec2.internal'
+```
+
+The default behavior for resolv.conf and the resolver is to try the servers in the order listed. The resolver will only try the next nameserver if the first nameserver times out. The [resolv.conf manpage](http://linux.die.net/man/5/resolv.conf) says "The algorithm used is to try a name server, and if the query times out, try the next, until out of name servers, then repeat trying all the name servers until a maximum number of retries are made.". Even if `rotate` is used, it will not solve the issue.
