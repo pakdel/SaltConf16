@@ -1,22 +1,5 @@
-/etc/dhcp/dhclient-enter-hooks:
-  file.managed:
-    - contents: |
-                #######################################
-                # Managed by Salt, please do NOT edit #
-                #######################################
-                # Creating /etc/named.forwarders to be used by Bind, if needed
-                echo "    forwarders { ${new_domain_name_servers// /;}; };" >/etc/named.forwarders
-
-    - template: jinja
-    - user: root
-    - group: root
-    - mode: 755
-
-renew_dhcp:
-  cmd.wait:
-    - name: dhclient -r && dhclient
-    - watch:
-      - file: /etc/dhcp/dhclient-enter-hooks
+include:
+  - name_resolution
 
 named:
   pkg.installed:
