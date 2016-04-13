@@ -126,3 +126,6 @@ salt minion state.sls name_resolution
 
 salt minion state.sls dns
 ```
+
+- But on the DNS itself, `/etc/resolv.conf` is managed by DHCP and Salt
+    - persian expression: two kings do not fit in the same kingdom (cannot rule the same kingdom)
