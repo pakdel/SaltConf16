@@ -101,9 +101,9 @@ salt-minion -l debug
     - Well, we already have repo.saltstack.com covered.
 
 ## V.4.1
-- Put it in resolv.conf
+- Put it in resolv.conf:
 Lets put it in the [interface config file](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Deployment_Guide/s1-networkscripts-interfaces.html) using `PEERDNS`
-    - But we cannot get the DNS provided by DCP in this file
+    - But we cannot get the DNS provided by DHCP in this file
 - Lets use DHCP Client Scripts as in [man 8 dhclient-script](http://linux.die.net/man/8/dhclient-script)
     - On after defining the make_resolv_conf function, the client script checks for the presence of an executable `/etc/dhcp/dhclient-enter-hooks` script, and if present, it invokes the script inline
     - Going to update values of `new_domain_name_servers` and `new_domain_name_servers` variables
