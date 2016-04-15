@@ -15,7 +15,7 @@ API elb:
         elb_protocol: HTTP
         instance_protocol: HTTP
     - health_check:
-      target: 'HTTP:80/test'
+        target: 'HTTP:80/test'
     - cnames:
       - name: api.auto.dot.
         zone: auto.dot.
