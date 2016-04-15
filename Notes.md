@@ -173,3 +173,26 @@ The VIP IP does not change, so we can put it in the DNS state file.
 - Create the Virtual Server and assign an IP
 - Create the Service Group and put it in the Virtual Server
 - Create the Server object and add to the Service Group
+
+## V.6.2
+- Usually, it is more complicated
+- There are some pillars involved:
+
+```
+netscaler.host: 172.31.0.100
+netscaler.user: automatic
+netscaler.pass: SOME_PASSWORD
+
+netscaler:
+  roles:
+    api:
+      ext.api.auto.dot:
+        ip: 172.31.0.201
+        servicegroups: api.auto.dot.80
+      int.api.auto.dot:
+        ip: 172.31.0.101
+        servicegroups: api.auto.dot.80
+
+```
+
+- And we can use them in DNS

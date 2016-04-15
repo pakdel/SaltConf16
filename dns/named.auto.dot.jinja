@@ -13,7 +13,4 @@ auto.dot        IN SOA    auto.dot. salt.auto.dot. (
 $ORIGIN auto.dot.
 
 test             A     127.0.0.1
-{%- for ip_addrs in salt['mine.get']('roles:api', 'network.ip_addrs', 'grain').values() %}
-{#- Assuming one IP per server #}
-api              A     {{ ip_addrs[0] }}
-{%- endfor %}
+api              A     {{ pillar['netscaler']['roles']['api']['int.api.auto.dot']['ip'] }}
