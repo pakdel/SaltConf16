@@ -150,3 +150,16 @@ salt minion state.sls dns
 ## V.5.1
 - Create the ELB
 - Add the ELB to `auto.dot.` as a Route53 Record Set
+
+## V.5.2
+- Add instances to the ELB
+    - Do not forget to put `ec2_instance_id` in `mine_functions:grains.item`
+    - You can also use [salt-contrib/grains/ec2_info.py](https://github.com/saltstack/salt-contrib/blob/master/grains/ec2_info.py) for EC2 pillars
+
+```
+salt minion saltutil.sync_grains
+salt minion grains.get ec2_instance_id
+salt minion mine.update
+
+salt minion state.sls elb
+```

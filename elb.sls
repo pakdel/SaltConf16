@@ -19,3 +19,11 @@ API elb:
     - cnames:
       - name: api.auto.dot.
         zone: auto.dot.
+
+API instances in elb:
+  boto_elb.register_instances:
+    - name: api
+    - instances:
+{%- for api_instance_grains in salt['mine.get']('roles:api', 'grains.item', 'grain').values() %}
+      - {{ api_instance_grains['ec2_instance_id'] }}
+{%- endfor %}
