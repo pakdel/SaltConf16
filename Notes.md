@@ -129,3 +129,14 @@ salt minion state.sls dns
 
 - But on the DNS itself, `/etc/resolv.conf` is managed by DHCP and Salt
     - persian expression: two kings do not fit in the same kingdom (cannot rule the same kingdom)
+
+## V.4.3
+- Using DHCP Client Scripts to only set up DNS forwarder(s), but not the `/etc/resolv.conf` itself
+
+```
+salt minion cmd.run 'rm -f /etc/dhcp/dhclient-enter-hooks'
+salt minion cmd.run 'dhclient -r && dhclient'
+salt minion state.sls name_resolution
+
+salt minion state.sls dns
+```
