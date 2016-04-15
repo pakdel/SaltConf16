@@ -163,3 +163,13 @@ salt minion mine.update
 
 salt minion state.sls elb
 ```
+
+
+
+# V. 6
+The VIP IP does not change, so we can put it in the DNS state file.
+
+## V.6.1
+- Create the Virtual Server and assign an IP
+- Create the Service Group and put it in the Virtual Server
+- Create the Server object and add to the Service Group

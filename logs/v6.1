@@ -1,0 +1,52 @@
+[0;0m# salt minion saltutil.sync_modules
+[0;36mminion[0;0m:
+    [0;32m- modules.netscaler[0;0m
+[0;0m# salt minion saltutil.sync_states
+[0;36mminion[0;0m:
+    [0;32m- states.netscaler[0;0m
+[0;0m# salt minion state.show_sls netscaler
+[0;36mminion[0;0m:
+    [0;36m----------[0;0m
+    [0;36mvip.api.auto.dot[0;0m:
+        [0;36m----------[0;0m
+        [0;36m__env__[0;0m:
+            [0;32mbase[0;0m
+        [0;36m__sls__[0;0m:
+            [0;32mnetscaler[0;0m
+        [0;36mnetscaler[0;0m:
+            [0;32m|_[0;0m
+              [0;36m----------[0;0m
+              [0;36mip[0;0m:
+                  [0;32m172.31.0.201[0;0m
+            [0;32m|_[0;0m
+              [0;36m----------[0;0m
+              [0;36mport[0;0m:
+                  [0;1;33m80[0;0m
+            [0;32m|_[0;0m
+              [0;36m----------[0;0m
+              [0;36mtype[0;0m:
+                  [0;32mHTTP[0;0m
+            [0;32m|_[0;0m
+              [0;36m----------[0;0m
+              [0;36mservicegroup[0;0m:
+                  [0;32m|_[0;0m
+                    [0;36m----------[0;0m
+                    [0;36mname[0;0m:
+                        [0;32msg.api.auto.dot[0;0m
+                    [0;36mservers[0;0m:
+                        [0;36m----------[0;0m
+                        [0;36mminion[0;0m:
+                            [0;36m----------[0;0m
+                            [0;36mip[0;0m:
+                                [0;32m172.31.32.50[0;0m
+                            [0;36mport[0;0m:
+                                [0;1;33m80[0;0m
+                            [0;36mstatus[0;0m:
+                                [0;32menabled[0;0m
+                    [0;36mtype[0;0m:
+                        [0;32mHTTP[0;0m
+            [0;32m- present[0;0m
+            [0;32m|_[0;0m
+              [0;36m----------[0;0m
+              [0;36morder[0;0m:
+                  [0;1;33m10000[0;0m
