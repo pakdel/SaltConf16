@@ -140,3 +140,13 @@ salt minion state.sls name_resolution
 
 salt minion state.sls dns
 ```
+
+
+
+# V. 5
+- We better have a LoadBalancer when deploying a new version of this API
+- Create the Route53 Zone (`auto.dot.`)
+
+## V.5.1
+- Create the ELB
+- Add the ELB to `auto.dot.` as a Route53 Record Set
